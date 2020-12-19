@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/toxicity"></script>
+	<title>Home</title>
+	<!-- <link rel="stylesheet" type="text/css" href="../static/css/styles.css"> -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+
+<style>
+	body{
+		background-size: 100% ;
+		background-repeat: no-repeat;
+		background-image: url('https://miro.medium.com/max/1000/0*pyUdGjbHsZhmu7W9');
+	}
+</style>
+</head>
+<body>
+	<header>
+		<div class="container">
+		<div id="brandname">
+		</div>
+		<h2> Toxicity Analyser</h2>
+		
+	</div>
+	</header>
+
+	<div class="ml-container">
+
+		<!-- <form action="{{ url_for('predict')}}" method="POST"> -->
+		<p>Please enter the text below</p>
+		<!-- <input type="text" name="comment"/> -->
+		<textarea id='message' name="message" rows="6" cols="50"></textarea>
+		<br/>
+
+		<input type="button" class="btn-info" value="predict" id='predict'>
+	<!-- </form> -->
+	
+	
+	<script>
+		var textarea = document.getElementById('message');
+		var message;
+		function updateResult() {
+			message = textarea.value;
+		}
+		textarea.onkeyup = updateResult;
+		
+		document.getElementById("predict").onclick = function () {
+			if(message){}else{
+				message='Nothing';
+			}
+			textarea.value='';
+			location.href = "js_script.html?message="+message;
+		};
+	</script>
+</body>
+</html>
